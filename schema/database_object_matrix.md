@@ -111,12 +111,12 @@ live, V9-V12 not live as of this writing).
 - **Purpose**: 1:1 extension of `universal_objects` for the Vehicle type
   — structured year/make/model/trim/VIN/etc.
 - **Owner**: `eke-database` (schema); not currently written by
-  `eke-service` (no application code creates `vehicle_objects` rows yet).
-  **Verified empty**: the one seeded Vehicle-typed `universal_objects` row
-  ("2002 Dodge Ram 1500") predates any commit pipeline and has no matching
-  `vehicle_objects` extension row (`verify_engineering_objects.sql` §2
-  confirms this live) — informational, not an error, but worth knowing
-  before assuming VIN/year/make/model data is populated anywhere today.
+  `eke-service` (no application code creates `vehicle_objects` rows yet —
+  the one existing row predates any commit pipeline and was seeded
+  directly). Note: this section previously (AP-005C) documented this
+  table as verified empty; as of the AP-005E migration it contains 1 row
+  matching the seeded Vehicle. The exact point the row was added wasn't
+  investigated — see `DATABASE_STATUS.md` "Known issues."
 - **Migration**: V7.
 - **Primary key**: `id` (UUID).
 - **Foreign keys**: `universal_object_id` → `universal_objects.id`.
